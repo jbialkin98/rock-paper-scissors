@@ -18,3 +18,17 @@ function getComputerChoice() {
     console.log(computerChoice);
     return computerChoice;
 }
+
+function playRound(playerSelection, computerSelection) {
+    if (computerSelection === "Rock") {
+        console.log("Tie!");
+    } else if (computerSelection === "Paper") {
+        console.log("You Lose! Paper beats Rock");
+    } else if (computerSelection === "Scissors") {
+        console.log("You Win! Rock beats Scissors");
+    }
+}
+
+const playerSelection = "Rock";
+const computerSelection = getComputerChoice();
+playRound(playerSelection, computerSelection);
