@@ -15,14 +15,16 @@ function getComputerChoice() {
         computerChoice = "SCISSORS";
     }
     // print to the console the result
-    console.log(computerChoice);
     return computerChoice;
 }
 
-let playerSelection = "ROCK";
 let computerSelection = getComputerChoice();
+let playerSelection = prompt("ENTER ROCK, PAPER, OR SCISSORS:", "ROCK, PAPER, SCISSORS");
 let playerScore = 0;
 let computerScore = 0;
+let wrongInput = 0;
+
+game();
 
 function playRound(playerSelection, computerSelection) {
     if (
@@ -45,21 +47,23 @@ function playRound(playerSelection, computerSelection) {
         ) {
             console.log(`YOU WIN! ${playerSelection} BEATS ${computerSelection}`);
             playerScore += 1;
-    } 
+    } else {
+        console.log("PLEASE ENTER A VALID CHOICE");
+    }
     displayScores();
     return playerScore, computerScore;
 }
 
 function displayScores() {
     console.log(`PLAYER SCORE: ${playerScore}`);
-    console.log(`COMPUTER SCORE: ${computerScore}`)
+    console.log(`COMPUTER SCORE: ${computerScore}`);
 }
 
 function game() {
     for (let i = 0; i < 4; i++) {
         playRound(playerSelection, computerSelection);
         computerSelection = getComputerChoice();
-        playerSelection = "ROCK"
+        playerSelection = prompt("ENTER YOUR NEXT CHOICE:", "ROCK, PAPER, SCISSORS");
     }
     // Final Round
     playRound(playerSelection,computerSelection);
