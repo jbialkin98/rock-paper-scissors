@@ -74,10 +74,21 @@ function game() {
     for (let i = 0; i < 4; i++) {
         playRound(playerSelection, computerSelection);
         computerSelection = getComputerChoice();
-        getPlayerSelection()
+        getPlayerSelection();
     }
     // Final Round
     playRound(playerSelection,computerSelection);
     console.log("FINAL SCORE!");
     displayScores();
+    getWinner();
+}
+
+function getWinner() {
+    if (playerScore > computerScore) {
+        console.log("YOU WON!");
+    } else if (computerScore > playerScore) {
+        console.log("YOU LOST!");
+    } else {
+        console.log("YOU TIED!");
+    }
 }
