@@ -18,8 +18,19 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function getPlayerSelection() {
+    let initialPlayerSelection = prompt("ENTER ROCK, PAPER, OR SCISSORS:", "ROCK, PAPER, SCISSORS");
+    let playerSelection = initialPlayerSelection.toUpperCase();
+    if (playerSelection == "ROCK" || playerSelection == "SCISSORS" || playerSelection == "PAPER") {
+        return playerSelection;
+    } else {
+        console.log("PLEASE ENTER A VALID CHOICE");
+        getPlayerSelection();
+    }
+}
+
 let computerSelection = getComputerChoice();
-let playerSelection = prompt("ENTER ROCK, PAPER, OR SCISSORS:", "ROCK, PAPER, SCISSORS");
+let playerSelection = getPlayerSelection();
 let playerScore = 0;
 let computerScore = 0;
 let wrongInput = 0;
@@ -28,9 +39,9 @@ game();
 
 function playRound(playerSelection, computerSelection) {
     if (
-        (computerSelection === "ROCK" && playerSelection === "ROCK") ||
-        (computerSelection === "PAPER" && playerSelection === "PAPER") ||
-        (computerSelection === "SCISSORS" && playerSelection === "SCISSORS")
+        (computerSelection === playerSelection) ||
+        (computerSelection === playerSelection) ||
+        (computerSelection === playerSelection)
         ) {
             console.log("TIE!");
     } else if (
@@ -40,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
         ) {
             console.log(`YOU LOSE! ${computerSelection} BEATS ${playerSelection}`);
             computerScore += 1;
-    } else if (
+    } else if ( 
         (computerSelection === "SCISSORS" && playerSelection === "ROCK") ||
         (computerSelection === "ROCK" && playerSelection === "PAPER") ||
         (computerSelection === "PAPER" && playerSelection === "SCISSORS")
@@ -63,7 +74,7 @@ function game() {
     for (let i = 0; i < 4; i++) {
         playRound(playerSelection, computerSelection);
         computerSelection = getComputerChoice();
-        playerSelection = prompt("ENTER YOUR NEXT CHOICE:", "ROCK, PAPER, SCISSORS");
+        getPlayerSelection()
     }
     // Final Round
     playRound(playerSelection,computerSelection);
