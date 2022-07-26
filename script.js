@@ -6,29 +6,63 @@ function getComputerChoice() {
     
     // if 1, "Rock"
     if (generatedNumber === 1) {
-        computerChoice = "Rock";
+        computerChoice = "ROCK";
     // if 2, "Paper"
     } else if (generatedNumber === 2) {
-        computerChoice = "Paper";
+        computerChoice = "PAPER";
     // if 3, "Scissors"
     } else {
-        computerChoice = "Scissors";
+        computerChoice = "SCISSORS";
     }
     // print to the console the result
     console.log(computerChoice);
     return computerChoice;
 }
 
+let playerSelection = "ROCK";
+let computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound(playerSelection, computerSelection) {
-    if (computerSelection === "Rock") {
-        console.log("Tie!");
-    } else if (computerSelection === "Paper") {
-        console.log("You Lose! Paper beats Rock");
-    } else if (computerSelection === "Scissors") {
-        console.log("You Win! Rock beats Scissors");
-    }
+    if (
+        (computerSelection === "ROCK" && playerSelection === "ROCK") ||
+        (computerSelection === "PAPER" && playerSelection === "PAPER") ||
+        (computerSelection === "SCISSORS" && playerSelection === "SCISSORS")
+        ) {
+            console.log("TIE!");
+    } else if (
+        (computerSelection === "PAPER" && playerSelection === "ROCK") ||
+        (computerSelection === "SCISSORS" && playerSelection === "PAPER") ||
+        (computerSelection === "ROCK" && playerSelection === "SCISSORS")
+        ) {
+            console.log(`YOU LOSE! ${computerSelection} BEATS ${playerSelection}`);
+            computerScore += 1;
+    } else if (
+        (computerSelection === "SCISSORS" && playerSelection === "ROCK") ||
+        (computerSelection === "ROCK" && playerSelection === "PAPER") ||
+        (computerSelection === "PAPER" && playerSelection === "SCISSORS")
+        ) {
+            console.log(`YOU WIN! ${playerSelection} BEATS ${computerSelection}`);
+            playerScore += 1;
+    } 
+    displayScores();
+    return playerScore, computerScore;
 }
 
-const playerSelection = "Rock";
-const computerSelection = getComputerChoice();
-playRound(playerSelection, computerSelection);
+function displayScores() {
+    console.log(`PLAYER SCORE: ${playerScore}`);
+    console.log(`COMPUTER SCORE: ${computerScore}`)
+}
+
+function game() {
+    for (let i = 0; i < 4; i++) {
+        playRound(playerSelection, computerSelection);
+        computerSelection = getComputerChoice();
+        playerSelection = "ROCK"
+    }
+    // Final Round
+    playRound(playerSelection,computerSelection);
+    console.log("FINAL SCORE!");
+    displayScores();
+}
