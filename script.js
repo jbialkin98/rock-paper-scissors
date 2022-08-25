@@ -18,24 +18,30 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getPlayerSelection() {
-    let initialPlayerSelection = prompt("ENTER ROCK, PAPER, OR SCISSORS:", "ROCK, PAPER, SCISSORS");
-    let playerSelection = initialPlayerSelection.toUpperCase();
-    if (playerSelection == "ROCK" || playerSelection == "SCISSORS" || playerSelection == "PAPER") {
-        return playerSelection;
-    } else {
-        console.log("PLEASE ENTER A VALID CHOICE");
-        getPlayerSelection();
-    }
-}
+// function getPlayerSelection() {
+//     let initialPlayerSelection = prompt("ENTER ROCK, PAPER, OR SCISSORS:", "ROCK, PAPER, SCISSORS");
+//     let playerSelection = initialPlayerSelection.toUpperCase();
+//     if (playerSelection == "ROCK" || playerSelection == "SCISSORS" || playerSelection == "PAPER") {
+//         return playerSelection;
+//     } else {
+//         console.log("PLEASE ENTER A VALID CHOICE");
+//         getPlayerSelection();
+//     }
+// }
+
+const btn = document.querySelectorAll('button');
+btn.forEach(btn => btn.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    playRound(this.className, computerSelection);
+  }));
 
 let computerSelection = getComputerChoice();
-let playerSelection = getPlayerSelection();
+let playerSelection = "ROCK"
 let playerScore = 0;
 let computerScore = 0;
 let wrongInput = 0;
 
-game();
+// game();
 
 function playRound(playerSelection, computerSelection) {
     if (
@@ -70,18 +76,18 @@ function displayScores() {
     console.log(`COMPUTER SCORE: ${computerScore}`);
 }
 
-function game() {
-    for (let i = 0; i < 4; i++) {
-        playRound(playerSelection, computerSelection);
-        computerSelection = getComputerChoice();
-        getPlayerSelection();
-    }
-    // Final Round
-    playRound(playerSelection,computerSelection);
-    console.log("FINAL SCORE!");
-    displayScores();
-    getWinner();
-}
+// function game() {
+//     for (let i = 0; i < 4; i++) {
+//         playRound(playerSelection, computerSelection);
+//         computerSelection = getComputerChoice();
+//         getPlayerSelection();
+//     }
+//     // Final Round
+//     playRound(playerSelection,computerSelection);
+//     console.log("FINAL SCORE!");
+//     displayScores();
+//     getWinner();
+// }
 
 function getWinner() {
     if (playerScore > computerScore) {
