@@ -43,26 +43,30 @@ let wrongInput = 0;
 
 // game();
 
+const matchResults = document.querySelector('.results');
+const playerScoreDisplay = document.querySelector('.playerScore');
+const computerScoreDisplay = document.querySelector('.computerScore');
+
 function playRound(playerSelection, computerSelection) {
     if (
         (computerSelection === playerSelection) ||
         (computerSelection === playerSelection) ||
         (computerSelection === playerSelection)
         ) {
-            console.log("TIE!");
+            matchResults.textContent = "TIE!";
     } else if (
         (computerSelection === "PAPER" && playerSelection === "ROCK") ||
         (computerSelection === "SCISSORS" && playerSelection === "PAPER") ||
         (computerSelection === "ROCK" && playerSelection === "SCISSORS")
         ) {
-            console.log(`YOU LOSE! ${computerSelection} BEATS ${playerSelection}`);
+            matchResults.textContent = `YOU LOSE! ${computerSelection} BEATS ${playerSelection}`;
             computerScore += 1;
     } else if ( 
         (computerSelection === "SCISSORS" && playerSelection === "ROCK") ||
         (computerSelection === "ROCK" && playerSelection === "PAPER") ||
         (computerSelection === "PAPER" && playerSelection === "SCISSORS")
         ) {
-            console.log(`YOU WIN! ${playerSelection} BEATS ${computerSelection}`);
+            matchResults.textContent = `YOU WIN! ${playerSelection} BEATS ${computerSelection}`;
             playerScore += 1;
     } else {
         console.log("PLEASE ENTER A VALID CHOICE");
@@ -72,8 +76,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function displayScores() {
-    console.log(`PLAYER SCORE: ${playerScore}`);
-    console.log(`COMPUTER SCORE: ${computerScore}`);
+    playerScoreDisplay.textContent = `PLAYER SCORE: ${playerScore}`;
+    computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerScore}`;
 }
 
 // function game() {
