@@ -57,14 +57,22 @@ function playRound(playerSelection, computerSelection) {
         ) {
             matchResults.textContent = `YOU WIN! ${playerSelection} BEATS ${computerSelection}`;
             playerScore += 1;
-    } else {
-        console.log("PLEASE ENTER A VALID CHOICE");
     }
     displayScores();
     return playerScore, computerScore;
 }
 
 function displayScores() {
+    if (playerScore > computerScore) {
+        playerScoreDisplay.style.color = 'green';
+        computerScoreDisplay.style.color = 'red';
+    } else if (computerScore > playerScore) {
+        computerScoreDisplay.style.color = 'green';
+        playerScoreDisplay.style.color = 'red';
+    } else {
+        computerScoreDisplay.style.color = 'green';
+        playerScoreDisplay.style.color = 'green';
+    }
     playerScoreDisplay.textContent = `PLAYER SCORE: ${playerScore}`;
     computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerScore}`;
     if (playerScore === 5 || computerScore === 5) { getWinner(); }
@@ -73,10 +81,10 @@ function displayScores() {
 
 function getWinner() {
     if (playerScore > computerScore) {
+        gameOver.style.color = 'green';
         gameOver.textContent = "YOU WON!";
     } else if (computerScore > playerScore) {
+        gameOver.style.color = 'red';
         gameOver.textContent = "YOU LOST!";
-    } else {
-        gameOver.textContent = "YOU TIED!";
     }
 }
