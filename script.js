@@ -50,11 +50,7 @@ function playRound(playerSelection, computerSelection) {
         ) {
             matchResults.textContent = `YOU LOSE! ${computerSelection} BEATS ${playerSelection}`;
             computerScore += 1;
-    } else if ( 
-        (computerSelection === "SCISSORS" && playerSelection === "ROCK") ||
-        (computerSelection === "ROCK" && playerSelection === "PAPER") ||
-        (computerSelection === "PAPER" && playerSelection === "SCISSORS")
-        ) {
+    } else {
             matchResults.textContent = `YOU WIN! ${playerSelection} BEATS ${computerSelection}`;
             playerScore += 1;
     }
